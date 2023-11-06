@@ -1,3 +1,69 @@
-.background{
-    background-image:  linear-gradient(to bottom, #fff, #E8C8B0) ;
+// .background{
+//     background-image:  linear-gradient(to bottom, #fff, #E8C8B0) ;
+//   }
+
+.parallax-remove-scrollbar {
+  -webkit-scrollbar-display: none !important;
+  scrollbar-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.hero {
+  &__img {
+    background-image: url("../../assets/images/hero.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: -15% 50%;
+
+    @media only screen and (min-width: 768px) {
+      background-size: 40%;
+      background-position: 75% 50%;
+    }
+
+    &--find {
+      background-image: url("../../assets/images/find-img.png");
+      background-position: 115% 50.2%;
+      background-size: 50%;
+      @media only screen and (min-width: 768px) {
+        background-size: 25%;
+        background-position: 100% 51.5%;
+      }
+    }
   }
+}
+
+.gallery {
+  &--mid {
+    margin-left: 33.33%;
+  }
+  &--end {
+    margin-left: 66.67%;
+  }
+
+  &__img {
+    background-image: url("../../assets/images/creative-makeup.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 80%;
+    background-position:center;
+    @media only screen and (min-width: 490px) {
+      background-position: 0%;
+    }
+
+    @media only screen and (min-width: 1280px) {
+      background-size: 33.33%;
+      background-position: 0% 50%;
+    }
+
+    &--mid {
+      background-image: url("../../assets/images/glamurous-makeup.jpg");
+      
+    }
+    &--end {
+      background-image: url("../../assets/images/natural-makeup.jpg");
+    }
+  }
+
+  &__text{
+    font-size: 4.5vw;
+  }
+}

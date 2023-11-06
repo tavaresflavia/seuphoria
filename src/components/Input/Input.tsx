@@ -28,8 +28,9 @@ const Input: React.FC<InputProps> = ({id, onChange, value, label, type, name}) =
           pb-1
           w-full
           text-md
+          border-2
+          border-zinc-700
           focus:outline-none
-          focus:border-2
           focus:border-zinc-400
           peer"
           placeholder=" "> </textarea> : <input
@@ -46,8 +47,9 @@ const Input: React.FC<InputProps> = ({id, onChange, value, label, type, name}) =
           pb-1
           w-full
           text-md
+          border-2
+          border-zinc-700
           focus:outline-none
-          focus:border-2
           focus:border-zinc-400
           peer"
           placeholder=" "
@@ -55,7 +57,8 @@ const Input: React.FC<InputProps> = ({id, onChange, value, label, type, name}) =
         <label className="
         absolute
         text-md
-        text-zinc-400
+        text-zinc-700
+        font-semibold
         duration-150
         transform
         -translate-y-3

@@ -1,89 +1,131 @@
-import {useState} from "react";
-import leave from "../../assets/images/leave.png";
-import hero from "../../assets/images/hero.jpg";
-import aboutUs from "../../assets/images/about-us.jpg";
+import {  useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "./Home.scss";
 import Input from "../../components/Input/Input";
 
 const Home = () => {
-  interface Inputs{
+
+  interface Inputs {
     email: string;
     name: string;
     message: string;
   }
-  const defaultInputs = {email:"", name:"", message: ""};
+  const defaultInputs = { email: "", name: "", message: "" };
   const [inputs, setInputs] = useState(defaultInputs);
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>):void => {
-    const newInputs : Inputs = {...inputs};
-    newInputs[(e!.target as HTMLInputElement)!.name as keyof Inputs] = (e!.target as HTMLInputElement)!.value;
+  const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    const newInputs: Inputs = { ...inputs };
+    newInputs[(e!.target as HTMLInputElement)!.name as keyof Inputs] = (e!
+      .target as HTMLInputElement)!.value;
     setInputs(newInputs);
-  }
-  const areInputsValid= () => {
-    const {name, email, message} = inputs;
-    const mailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (!name || !message || !(email.match(mailRegex)) ){
-      return false
-    } 
-    return true
-  }
+  };
+  const areInputsValid = () => {
+    const { name, email, message } = inputs;
+    const mailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!name || !message || !email.match(mailRegex)) {
+      return false;
+    }
+    return true;
+  };
   const handleSend = () => {
-  setInputs(defaultInputs);
-  if (!areInputsValid()){
-    setError("All fields are required");
-  } 
-
-  }
+    setInputs(defaultInputs);
+    if (!areInputsValid()) {
+      setError("All fields are required");
+    }
+  };
   return (
-    <div className="home">
-      <Parallax pages={3} className="background">
+    <div className="home max-w-screen-xl flex justify-center m-auto">
+      <Parallax pages={6.5} className="background">
         <ParallaxLayer
           offset={0}
-          className="flex justify-around items-center flex-col md:flex-row">
-          <img
-            className="h-1/6 md:h-1/5 absolute top-0 left-1/3 md:left-0"
-            src={leave}
-            alt="hero leave"></img>
-          <div className="flex flex-col gap-4 pt-52 p-4 md:p-8 ">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-wide green-text">
-              BREATHE
+          className="flex items-start mt-8 justify-center md:items-center md:justify-start md:ml-1/5 w-2/5">
+          <div className="flex flex-col gap-4  p-4 md:p-8 lg:pl-20 ">
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-wide text-black">
+              S<span className="font-bold">EU</span>PHORIA
             </h1>
-            <p>cool slogan about being organic, natual, cueltry free...</p>
+            <p>Beauty partner on the journey of self-expression</p>
             <button
               className="tracking-wide border-2 rounded-full 	
 border-black px-2 py-1 ">
               Shop now
             </button>
           </div>
-            <img className=" p-4 md:p-8 w-4/5 max-w-sm " src={hero} alt="Close-up of a woman applying cream to her face within a tranquil and peaceful ambiance."></img>
         </ParallaxLayer>
-        <ParallaxLayer offset={1} className="flex justify-around items-center flex-col md:flex-row">
-          
-       
-          <div className="flex flex-col gap-4 pt-52 p-4 md:p-8 "> 
-          <h2 className="text-4xl md:text-6xl font-bold tracking-wide green-text" >About us </h2>
-          <p className="max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+        <ParallaxLayer speed={0.5} sticky={{ start: 0, end: 1.5 }}>
+          <div className="hero__img w-full h-full"></div>
+        </ParallaxLayer>
+        <ParallaxLayer  sticky={{ start: 1.0, end: 1.5 }}>
+          <div className="hero__img hero__img--find w-full h-full"></div>
+        </ParallaxLayer>
+        <ParallaxLayer
+          offset={1.2}
+          className="flex items-center flex-col md:flex-row">
+          <div className="flex flex-col gap-4  p-4 md:p-8 lg:pl-20 md:w-2/4 max-w-4xl">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-wide text-black">
+              Title
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
-          <img className=" p-4 md:p-8 w-4/5 max-w-md md:order-first "  src={aboutUs} alt="products"></img>
         </ParallaxLayer>
-        <ParallaxLayer offset={2} className="flex flex-col ustify-center items-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-wide green-text">Contact Us</h2>
-          <div> 
-            <Input id="name" onChange={handleChange} value={inputs.name} label="Name" type="name" name="name" />
-            <Input id="email" onChange={handleChange} value={inputs.email} label="Email" type="email" name="email"/>
-            <Input id="message" onChange={handleChange} value={inputs.message} label="Message" type="textarea" name="message"/>
-            <button className="bg-zinc-400  w-full text-white font-semibold rounded-md" onClick={handleSend}>SEND</button>
-            {error ? <p className="text-center text-red-800 w-full font-semibold">{error}</p>:""}
+        <ParallaxLayer speed={0.5} sticky={{ start: 2.1, end: 3.5 }} className= "w-1/3 gallery">
+          <div className="gallery__img w-full h-full flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">CREATIVE</p></div>
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.5} sticky={{ start: 2.5, end: 4 }} className= "w-1/3 gallery--mid">
+          <div className="gallery__img gallery__img--mid w-full h-full flex items-center"><p className="gallery__text text-white font-semibold pt-96 text-opacity-70" >GLAMOROUS</p></div>
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.5} sticky={{ start: 3, end: 4.5 }} className= "w-1/3 gallery--end">
+          <div className="gallery__img gallery__img--end w-full h-full  flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">NATURAL</p></div>
+        </ParallaxLayer>
+        <ParallaxLayer
+          offset={5.75}
+          className="flex flex-col ustify-center items-center">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-wide text-black">
+            Contact Us
+          </h2>
+          <div>
+            <Input
+              id="name"
+              onChange={handleChange}
+              value={inputs.name}
+              label="Name"
+              type="name"
+              name="name"
+            />
+            <Input
+              id="email"
+              onChange={handleChange}
+              value={inputs.email}
+              label="Email"
+              type="email"
+              name="email"
+            />
+            <Input
+              id="message"
+              onChange={handleChange}
+              value={inputs.message}
+              label="Message"
+              type="textarea"
+              name="message"
+            />
+            <button
+              className="bg-black w-full text-white font-semibold rounded-md py-2"
+              onClick={handleSend}>
+              SEND
+            </button>
+            {error ? (
+              <p className="text-center text-red-800 w-full font-semibold">
+                {error}
+              </p>
+            ) : (
+              ""
+            )}
           </div>
         </ParallaxLayer>
       </Parallax>
