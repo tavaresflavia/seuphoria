@@ -1,6 +1,8 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 // imageUrl, name, quantity
 const Card = ({}) => {
+
+
     return (
         <article>
             {/* <img src={likeIcon} alt="like icon"></img> */}

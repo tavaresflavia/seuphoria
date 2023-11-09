@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { Link } from "react-router-dom";
 import "./Home.scss";
 import Input from "../../components/Input/Input";
 
@@ -37,7 +38,7 @@ const Home = () => {
   };
   return (
     <div className="home max-w-screen-xl flex justify-center m-auto">
-      <Parallax pages={6.5} className="background">
+      <Parallax pages={6.5} className="pointer-event-auto">
         <ParallaxLayer
           offset={0}
           className="flex items-start mt-8 justify-center md:items-center md:justify-start md:ml-1/5 w-2/5">
@@ -46,14 +47,12 @@ const Home = () => {
               S<span className="font-bold">EU</span>PHORIA
             </h1>
             <p>Beauty partner on the journey of self-expression</p>
-            <button
-              className="tracking-wide border-2 rounded-full 	
-border-black px-2 py-1 ">
+            <Link to="/shop" className=" tracking-wider border-2 rounded-full border-black px-2 py-1 text-center">
               Shop now
-            </button>
+            </Link>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer speed={0.5} sticky={{ start: 0, end: 1.5 }}>
+        <ParallaxLayer speed={0.5} sticky={{ start: 0, end: 1.5 }} className="pointer-events-none">
           <div className="hero__img w-full h-full"></div>
         </ParallaxLayer>
         <ParallaxLayer  sticky={{ start: 1.0, end: 1.5 }}>
@@ -74,13 +73,13 @@ border-black px-2 py-1 ">
             </p>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer speed={0.5} sticky={{ start: 2.1, end: 3.5 }} className= "w-1/3 gallery">
-          <div className="gallery__img w-full h-full flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">CREATIVE</p></div>
+        <ParallaxLayer speed={0.35} sticky={{ start: 2.1, end: 3.5 }} className= "w-1/3 gallery">
+          <div className="gallery__img w-full h-full flex items-center"><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">CREATIVE</p></div>
         </ParallaxLayer>
-        <ParallaxLayer speed={0.5} sticky={{ start: 2.5, end: 4 }} className= "w-1/3 gallery--mid">
+        <ParallaxLayer speed={0.35} sticky={{ start: 2.5, end: 4 }} className= "w-1/3 gallery--mid">
           <div className="gallery__img gallery__img--mid w-full h-full flex items-center"><p className="gallery__text text-white font-semibold pt-96 text-opacity-70" >GLAMOROUS</p></div>
         </ParallaxLayer>
-        <ParallaxLayer speed={0.5} sticky={{ start: 3, end: 4.5 }} className= "w-1/3 gallery--end">
+        <ParallaxLayer speed={0.35} sticky={{ start: 3, end: 4.5 }} className= "w-1/3 gallery--end">
           <div className="gallery__img gallery__img--end w-full h-full  flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">NATURAL</p></div>
         </ParallaxLayer>
         <ParallaxLayer
