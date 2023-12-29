@@ -8,7 +8,7 @@ const CardList = () => {
 
   const [products, setProducts] = useState<(Product)[]>([]);
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [type, setType] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -54,7 +54,7 @@ const CardList = () => {
             colors,
             rating,
           };
-        });
+          });
 
         if (tags.length > 0) {
           const filteredData = data.filter(
@@ -74,10 +74,23 @@ const CardList = () => {
       });
   }, [min, maxi, type, tags, rating]);
 
+  if (loading === true){
+    return (
+      <p> Loading...</p>
+    )
+  }
+
+  if (error === true){
+    return (
+      <p> error</p>
+    )
+  }
+
+
   return (
-    <div>
+    <section className= " flex flex-wrap  justify-around m-2 md:m-4">
       {products.length > 0 ? (
-        products.map((product) => {
+        products.filter((product)=> product.price > 0).map((product) => {
           const {imageUrl,
             name,
             price,
@@ -106,7 +119,7 @@ const CardList = () => {
       ) : (
         <div>products not found</div>
       )}
-    </div>
+    </section>
   );
 };
 
