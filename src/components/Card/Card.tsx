@@ -1,9 +1,8 @@
 import {
   addProduct,
-  removeProduct,
-  useAppDispatch,
+  removeProduct
 } from "../../store/features/cart";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector, useAppDispatch } from "../../store/store";
 import { Product } from "../../Interfaces";
 import fullStar from "../../assets/icons/full-star.png";
 import halfStar from "../../assets/icons/star-half-empty.png";

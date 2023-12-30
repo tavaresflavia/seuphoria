@@ -1,9 +1,4 @@
-import { createSlice, combineReducers  } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-
-
-const rootReducer = combineReducers({});
+import { createSlice } from '@reduxjs/toolkit';
 
 interface CartState{
   value: { [index: string]: number };
@@ -37,17 +32,5 @@ export const cartSlice = createSlice({
 });
 export const { addProduct, removeProduct } = cartSlice.actions;
 
-
-export type RootState = ReturnType<typeof rootReducer>;
-
-export const store = configureStore ({
-  reducer: {
-    cart: cartSlice.reducer,
-  }
-})
-
-
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export const useAppDispatch: () => typeof store.dispatch = useDispatch;
 
 
