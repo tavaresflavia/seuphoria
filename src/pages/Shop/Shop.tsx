@@ -3,10 +3,7 @@ import CardList from "../../components/CardList/CardList";
 import { useAppSelector } from "../../store/store";
 
 const Shop = () => {
-  const cart = useAppSelector((state) => {
-    console.log(state);
-    return state.cart.value;
-  });
+  const cart = useAppSelector((state) => (state.cart.value));
 
   return (
     <section className="">
