@@ -1,10 +1,12 @@
 import { cartSlice } from "./features/cart";
+import { favSlice } from "./features/favorites";
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,
+    favorites: favSlice.reducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

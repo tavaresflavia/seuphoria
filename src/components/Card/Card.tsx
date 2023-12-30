@@ -1,7 +1,5 @@
-import {
-  addProduct,
-  removeProduct
-} from "../../store/features/cart";
+import { addProduct, removeProduct } from "../../store/features/cart";
+import { addFav, removeFav } from "../../store/features/favorites";
 import { useAppSelector, useAppDispatch } from "../../store/store";
 import { Product } from "../../Interfaces";
 import fullStar from "../../assets/icons/full-star.png";
@@ -11,7 +9,8 @@ import addIcon from "../../assets/icons/add.png";
 import minusIcon from "../../assets/icons/minus.png";
 import firstAddIcon from "../../assets/icons/add-black.png";
 import heartIcon from "../../assets/icons/heart.png";
-import fullHeartIcon from '../../assets/icons/full-heart.png'
+import fullHeartIcon from "../../assets/icons/full-heart.png";
+
 const Card = ({
   imageUrl,
   name,
@@ -23,7 +22,6 @@ const Card = ({
   rating,
   description,
 }: Product) => {
-
   const dispatch = useAppDispatch();
 
   //stars array to display rating
@@ -36,15 +34,12 @@ const Card = ({
     }
   }
 
-  //check if there the product is the cart and get quantity
+  //get the state values of the cart and favorites
   const cart = useAppSelector((state) => state.cart.value);
+  const favorites = useAppSelector((state) => state.favorites.value);
 
   return (
     <article className="w-1/2 md:w-1/3 lg:w-1/5 p-2 md:p-8 ">
-      {/* <div className="-translate-y-5 md:-translate-y-7  flex justify-end">
- 
-      </div> */}
-
       <div className="flex justify-center  h-40 md:h-60 w-full">
         <img
           className="max-h-40 md:max-h-60 max-w-60 "
@@ -55,7 +50,12 @@ const Card = ({
       <div className="flex justify-between my-2">
         <img
           className=" w-5 h-5 cursor-pointer"
-          src={heartIcon}
+          src={favorites.includes(id) ? fullHeartIcon : heartIcon}
+          onClick={() => {
+            favorites.includes(id)
+              ? dispatch(removeFav(id))
+              : dispatch(addFav(id));
+          }}
           alt="like icon"></img>
         {cart[id] ? (
           <div className="opacity-90 relative bg-black text-white semibold w-30 cursor-pointer flex justify-center items-end rounded-full">
@@ -92,7 +92,6 @@ const Card = ({
         <h3>{name}</h3>
         <p>{`$${price}`} </p>
       </div>
-
       <div>
         {stars.map((type) => {
           return type === "full" ? (
