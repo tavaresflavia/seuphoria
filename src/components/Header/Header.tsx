@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from "../../store/store";
+import { useAppSelector} from "../../store/store";
 import heartIcon from "../../assets/icons/heart.png";
 import cartIcon from "../../assets/icons/shopping-cart.png";
 import { NavLink } from "react-router-dom";

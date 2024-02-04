@@ -13,7 +13,7 @@ const CardList = () => {
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [min, setMin] = useState(0);
-  const [maxi, setMaxi] = useState(9999);
+  const [maxi, setMaxi] = useState(999);
   const [rating, setRating] = useState(0);
   const [tags, setTags] = useState([]);
 

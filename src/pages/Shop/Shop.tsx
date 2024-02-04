@@ -6,12 +6,12 @@ const Shop = () => {
   const cart = useAppSelector((state) => (state.cart.value));
 
   return (
-    <section className="">
+    <main className="">
       <h1 className=" bg-black text-white text-4xl md:text-7xl text-center tracking-widest p-8">
         S<span className="font-semibold">EU</span>PHORIA
       </h1>
       <CardList />
-    </section>
+    </main>
   );
 };
 

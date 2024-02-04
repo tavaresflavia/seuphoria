@@ -1,15 +1,12 @@
-import { addProduct, removeProduct } from "../../store/features/cart";
 import { addFav, removeFav } from "../../store/features/favorites";
 import { useAppSelector, useAppDispatch } from "../../store/store";
 import { Product } from "../../Interfaces";
 import fullStar from "../../assets/icons/full-star.png";
 import halfStar from "../../assets/icons/star-half-empty.png";
 import emptyStar from "../../assets/icons/empty-star.png";
-import addIcon from "../../assets/icons/add.png";
-import minusIcon from "../../assets/icons/minus.png";
-import firstAddIcon from "../../assets/icons/add-black.png";
 import heartIcon from "../../assets/icons/heart.png";
 import fullHeartIcon from "../../assets/icons/full-heart.png";
+import QuantityButton from "../QuantityButton/QuantityButton";
 
 const Card = ({
   imageUrl,
@@ -57,36 +54,7 @@ const Card = ({
               : dispatch(addFav(id));
           }}
           alt="like icon"></img>
-        {cart[id] ? (
-          <div className="opacity-90 relative bg-black text-white semibold w-30 cursor-pointer flex justify-center items-end rounded-full">
-            <img
-              className="w-5 h-5 cursor-pointer"
-              src={addIcon}
-              alt="add icon"
-              onClick={() => {
-                dispatch(addProduct(id));
-              }}
-            />
-            <p className="mx-2 text-sm "> {cart[id]} </p>
-            <img
-              className="w-5 h-5 cursor-pointer"
-              src={minusIcon}
-              alt="minus icon"
-              onClick={() => {
-                dispatch(removeProduct(id));
-              }}
-            />
-          </div>
-        ) : (
-          <img
-            className=" w-5 h-5 cursor-pointer"
-            src={firstAddIcon}
-            alt="add button"
-            onClick={() => {
-              dispatch(addProduct(id));
-            }}
-          />
-        )}
+        <QuantityButton id ={id}/>
       </div>
       <div className="flex justify-between ">
         <h3>{name}</h3>
