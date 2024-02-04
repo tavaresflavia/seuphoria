@@ -18,8 +18,8 @@ const Cart = () => {
     const cart = useAppSelector((state) => state.cart.value);
     console.log(cart)
     return (
-        <main>
-            <h1 className=" border-y-4 border-gray-900 max-w-7xl text-4xl m-auto tracking-widest p-8">Your Cart</h1>
+        <main className="max-w-7xl m-auto">
+            <h1 className=" border-y-4 border-gray-900  text-4xl  tracking-widest p-8">Your Cart</h1>
             <ItemList/>
         </main>
     );
