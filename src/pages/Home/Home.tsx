@@ -74,13 +74,13 @@ const Home = () => {
           </div>
         </ParallaxLayer>
         <ParallaxLayer speed={0.35} sticky={{ start: 2.1, end: 3.5 }} className= "w-1/3 gallery">
-          <div className="gallery__img w-full h-full flex items-center"><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">CREATIVE</p></div>
+          <div className="gallery__img w-full h-full flex items-center"><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">SHOP NOW</p></div>
         </ParallaxLayer>
         <ParallaxLayer speed={0.35} sticky={{ start: 2.5, end: 4 }} className= "w-1/3 gallery--mid">
-          <div className="gallery__img gallery__img--mid w-full h-full flex items-center"><p className="gallery__text text-white font-semibold pt-96 text-opacity-70" >GLAMOROUS</p></div>
+          <div className="gallery__img gallery__img--mid w-full h-full flex items-center"><p className="gallery__text text-white font-semibold pt-96 text-opacity-70" >SHOP NOW</p></div>
         </ParallaxLayer>
         <ParallaxLayer speed={0.35} sticky={{ start: 3, end: 4.5 }} className= "w-1/3 gallery--end">
-          <div className="gallery__img gallery__img--end w-full h-full  flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">NATURAL</p></div>
+          <div className="gallery__img gallery__img--end w-full h-full  flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">SHOP NOW</p></div>
         </ParallaxLayer>
         <ParallaxLayer
           offset={5.75}

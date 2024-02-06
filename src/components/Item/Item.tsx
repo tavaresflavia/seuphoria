@@ -1,7 +1,24 @@
 import React from "react";
 import QuantityButton from "../QuantityButton/QuantityButton";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
+import { removeFav } from "../../store/features/favorites";
+import deleteIcon from "../../assets/icons/delete.png";
+import { useAppSelector, useAppDispatch } from "../../store/store";
+
 
 const Item = () => {
+  const dispatch = useAppDispatch();
+  const [path, setPath] = useState("");
+
+  const location = useLocation();
+  const { pathname } = location;
+  useEffect(() => {
+    setPath(pathname);
+  }, [pathname]);
+  console.log(path);
+  
+
   return (
     <article className="border-b-2">
       <li className="flex justify-between text-sm  p-2 md:p-8">
@@ -17,10 +34,11 @@ const Item = () => {
             <p> Item price: $12</p>
           </div>
         </div>
-        <div className="flex flex-col justify-between items-center">
+        {path === "/cart" && <div className="flex flex-col justify-between items-center">
           <p className="px-2 md:px-8 font-semibold text-base md:text-lg ">$12</p>
           <QuantityButton id={2} />
-        </div>
+        </div>}
+        {path==="/favorites" && <img className="w-4 h-4" onClick={()=>{dispatch(removeFav(2))}} src={deleteIcon}></img>}
       </li>
     </article>
   );

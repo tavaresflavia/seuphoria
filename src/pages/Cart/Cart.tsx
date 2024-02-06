@@ -7,19 +7,19 @@ import ItemList from '../../components/ItemList/ItemList';
 
 
 const Cart = () => {
+    const [path, setPath] = useState("");
     const [products, setProducts] = useState([]) ;
+    const location = useLocation();
+    const { pathname } = location;
+    useEffect(() => {
+      setPath(pathname);
+    }, [pathname]);
 
-    // useEffect(()=>{
-    //     const async data = () =>{ 
-    //         const response = await axios.get("https://makeup-api.herokuapp.com/api/v1/products.json")
-    //         return response.data
-
-    // },[products])
     const cart = useAppSelector((state) => state.cart.value);
     console.log(cart)
     return (
         <main className="max-w-7xl m-auto">
-            <h1 className=" border-y-4 border-gray-900  text-4xl  tracking-widest p-8">Your Cart</h1>
+            <h1 className=" border-y-4 border-gray-900  text-4xl  tracking-widest p-8">{path === "/cart" ?  "Your Cart": "Favorites"}</h1>
             <ItemList/>
         </main>
     );

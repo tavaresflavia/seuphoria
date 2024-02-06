@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
 import Cart from "./pages/Cart/Cart";
-import Favorites from "./pages/Favorites/Favorites";
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </main>
