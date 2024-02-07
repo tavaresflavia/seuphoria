@@ -32,7 +32,6 @@ const Card = ({
   }
 
   //get the state values of the cart and favorites
-  const cart = useAppSelector((state) => state.cart.value);
   const favorites = useAppSelector((state) => state.favorites.value);
 
   return (
@@ -47,8 +46,8 @@ const Card = ({
       <div className="flex justify-between my-2">
         <img
           className=" w-5 h-5 cursor-pointer"
-          src={favorites.includes(id) ? fullHeartIcon : heartIcon}
-          onClick={() => {
+          src={(id && favorites.includes(id)) ? fullHeartIcon : heartIcon}
+          onClick={() => { id &&
             favorites.includes(id)
               ? dispatch(removeFav(id))
               : dispatch(addFav(id));

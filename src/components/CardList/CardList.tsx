@@ -19,7 +19,7 @@ const CardList = () => {
       // .sort((a:Product,b:Product) => (b.rating-a.rating))
     axios
       .get(
-        `${SERVER_URI}?${category ? "category="+category:""}${brand ? "brand="+brand:""}${String(...queryTags)}`
+        `${SERVER_URI}/products?${category ? "category="+category:""}${brand ? "brand="+brand:""}${String(...queryTags)}`
       )
       .then((res) => {
         console.log(res)
