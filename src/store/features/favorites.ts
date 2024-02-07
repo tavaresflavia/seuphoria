@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface FavState {
-  value: number[];
+  value: (string|void)[];
 }
 
 const initialState: FavState = {

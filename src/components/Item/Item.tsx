@@ -36,9 +36,9 @@ const Item = () => {
         </div>
         {path === "/cart" && <div className="flex flex-col justify-between items-center">
           <p className="px-2 md:px-8 font-semibold text-base md:text-lg ">$12</p>
-          <QuantityButton id={2} />
+          <QuantityButton id={"dad"} />
         </div>}
-        {path==="/favorites" && <img className="w-4 h-4" onClick={()=>{dispatch(removeFav(2))}} src={deleteIcon}></img>}
+        {path==="/favorites" && <img className="w-4 h-4" onClick={()=>{dispatch(removeFav("2"))}} src={deleteIcon}></img>}
       </li>
     </article>
   );

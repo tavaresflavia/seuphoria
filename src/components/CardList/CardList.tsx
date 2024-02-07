@@ -5,7 +5,7 @@ import {Product} from "../../Interfaces";
 
 
 const CardList = () => {
-
+  const SERVER_URI = process.env.REACT_APP_API_URL
   const [products, setProducts] = useState<(Product)[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ const CardList = () => {
       // .sort((a:Product,b:Product) => (b.rating-a.rating))
     axios
       .get(
-        `http://localhost:8080/products?${category ? "category="+category:""}${brand ? "brand="+brand:""}${String(...queryTags)}`
+        `${SERVER_URI}?${category ? "category="+category:""}${brand ? "brand="+brand:""}${String(...queryTags)}`
       )
       .then((res) => {
         console.log(res)
@@ -53,7 +53,7 @@ const CardList = () => {
           const {imageUrl,
             name,
             price,
-            id,
+            _id,
             brand,
             tags,
             colors,
@@ -64,8 +64,8 @@ const CardList = () => {
               imageUrl={imageUrl}
               name={name}
               price={price}
-              id={id}
-              key={id}
+              id={_id}
+              key={_id}
               brand = {brand}
               tags = {tags}
               colors = {colors}

@@ -1,7 +1,9 @@
 
 
 export interface Product {
-    id: number;
+    _id?: string;
+    id?: string;
+    api_id?: number;
     brand: string;
     name: string;
     price: number;
