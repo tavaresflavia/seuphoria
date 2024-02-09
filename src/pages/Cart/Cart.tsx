@@ -18,7 +18,7 @@ const Cart = () => {
     console.log(cart)
     return (
         <main className="max-w-7xl m-auto">
-            <h1 className=" border-y-4 border-gray-900  text-4xl  tracking-widest p-8">{path === "/cart" ?  "Your Cart": "Favorites"}</h1>
+            <h1 className=" border-y-4 border-gray-900 text-xl md:text-4xl  tracking-widest p-8">{path === "/cart" ?  "Your Cart": "Favorites"}</h1>
             <ItemList path={path}/>
         </main>
     );
