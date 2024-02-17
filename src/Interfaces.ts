@@ -18,3 +18,11 @@ export interface Product {
     colors?: [];
     rating: number;
   }
+
+  export interface Filters {
+    brand: string;
+    tags: string[];
+    rating: number;
+    category: string;
+
+  }

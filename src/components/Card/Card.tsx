@@ -7,6 +7,7 @@ import emptyStar from "../../assets/icons/empty-star.png";
 import heartIcon from "../../assets/icons/heart.png";
 import fullHeartIcon from "../../assets/icons/full-heart.png";
 import QuantityButton from "../QuantityButton/QuantityButton";
+import { starsArray } from "../../utils";
 
 const Card = ({
   imageUrl,
@@ -21,15 +22,7 @@ const Card = ({
 }: Product) => {
   const dispatch = useAppDispatch();
 
-  //stars array to display rating
-  const stars: string[] = Array(5);
-  stars.fill("empty", 0, 5);
-  if (rating) {
-    stars.fill("full", 0, Math.floor(rating));
-    if (Math.floor(rating) !== rating) {
-      stars[Math.floor(rating)] = "half";
-    }
-  }
+  const stars = starsArray(rating);
 
   //get the state values of the cart and favorites
   const favorites = useAppSelector((state) => state.favorites.value);
