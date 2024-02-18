@@ -5,7 +5,7 @@ import { Product } from "../../Interfaces";
 import { Filters } from "../../Interfaces";
 import Filter from "../Filter/Filter";
 
-const CardList = () => {
+const CardList:React.FC = () => {
   const SERVER_URI = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState(false);
