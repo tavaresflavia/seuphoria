@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { removeFav } from "../../store/features/favorites";
 import deleteIcon from "../../assets/icons/delete.png";
-import { useAppSelector, useAppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../store/store";
 import axios from "axios";
 import { Product } from "../../Interfaces";
 
-const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
+const Item = ({ id, quantity }: { id: string; quantity: number }) => {
   const SERVER_URI = process.env.REACT_APP_API_URL;
 
   const [error, setError] = useState(false);
@@ -17,10 +17,9 @@ const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
   const [path, setPath] = useState("");
 
   const location = useLocation();
+  const dispatch = useAppDispatch();
   const { pathname } = location;
 
-  const dispatch = useAppDispatch();
-  console.log("itemprod", product);
   useEffect(() => {
     setPath(pathname);
     axios
@@ -35,7 +34,7 @@ const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
         setError(true);
         setLoading(false);
       });
-  }, [pathname, id]);
+  }, [pathname, id, SERVER_URI]);
 
   function isProduct(value: any): value is Product {
     return (
@@ -44,8 +43,8 @@ const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
       typeof value.price === "number"
     );
   }
-  if(loading){
-    return <p>Loading... </p>
+  if (loading) {
+    return <p>Loading... </p>;
   }
 
   if (!isProduct(product) || error) {
@@ -58,10 +57,7 @@ const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
     <article className="border-b-2">
       <li className="flex justify-between text-sm  p-2 md:p-8">
         <div className="flex">
-          <img
-            className=" w-20 md:w-28"
-            src={imageUrl}
-            alt="Lippie Pencil"></img>
+          <img className=" w-20 md:w-28" src={imageUrl} alt={name}></img>
           <div className="px-2  md:px-8">
             <h2 className=" font-semibold text-base md:text-lg ">{name}</h2>
             <p> {`Item price: $${price}`}</p>
@@ -72,11 +68,12 @@ const Item = ({ id, quantity }: { id: string; quantity: number; }) => {
             <p className="px-2 md:px-8 font-semibold text-base md:text-lg ">
               {`$${price * quantity}`}
             </p>
-            <QuantityButton id={_id} />
+            <QuantityButton id={_id} price={price} />
           </div>
         )}
         {path === "/favorites" && (
           <img
+            alt="remove icon"
             className="w-4 h-4"
             onClick={() => {
               dispatch(removeFav(_id));

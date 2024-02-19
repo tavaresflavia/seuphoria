@@ -46,7 +46,7 @@ const Card = ({
               : dispatch(addFav(id));
           }}
           alt="like icon"></img>
-        {id && <QuantityButton id ={id}/>}
+        {id && <QuantityButton id ={id} price={price}/>}
       </div>
       <div className="flex justify-between ">
         <h3>{name}</h3>

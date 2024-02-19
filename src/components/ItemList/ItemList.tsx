@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 
 const ItemList = ({ path }: { path: string }) => {
   const favorites = useAppSelector((state) => state.favorites.value);
-
   const cart = useAppSelector((state) => state.cart.value);
+  const total = useAppSelector((state) => state.total);
+
 
   return (
     <section>
@@ -27,7 +28,10 @@ const ItemList = ({ path }: { path: string }) => {
             ))
           : ""}
       </ul>
-      <Link to="/checkout"></Link>
+
+     <p>{total}</p>
+     
+     <Link className=" bg-black mx-auto p-2 text-white " to="/checkout"> CHECKOUT</Link>
     </section>
   );
 };
