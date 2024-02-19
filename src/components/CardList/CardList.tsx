@@ -17,8 +17,6 @@ const CardList:React.FC = () => {
     category: "",
   });
 
-  console.log("filters",filters)
-
   useEffect(() => {
     const { brand, tags, rating, category } = filters;
     const queryTags = tags?.map((tag) => `&tags=${tag}`);

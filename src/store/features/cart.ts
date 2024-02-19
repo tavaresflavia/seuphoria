@@ -28,9 +28,12 @@ export const cartSlice = createSlice({
         }
       }
     },
+    emptyCart: (state) => {
+      state.value = {}
+    }
   },
 });
-export const { addProduct, removeProduct } = cartSlice.actions;
+export const { addProduct, removeProduct, emptyCart } = cartSlice.actions;
 
 
 

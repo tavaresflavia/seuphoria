@@ -14,6 +14,15 @@ const Select = ({
   uniqueValues: (string | number)[];
   handleFilterChange: (value: string, key: keyof Filters) => void;
 }) => {
+
+  const ratingOption=(rating:number)=> {
+    let option = ""
+    starsArray(rating).forEach((type) => {
+      option.concat( "full" ? "★" : "☆");
+    })
+    return option
+  }
+ 
   return (
     <select
       className={` w-48 bg-transparent border border-gray-300 rounded-md py-2 my-2 px-3 focus:border-gray-500 focus:outline-none`}
@@ -25,12 +34,7 @@ const Select = ({
           el && (
             <option key={el} value={el}>
               {typeof el === "number" ? (
-                <span>
-                  {starsArray(el).map((type) => {
-                    return type === "full" ? "★" : "☆";
-                  })}
-                  & Up
-                </span>
+               ratingOption(el)
               ) : (
                 el.replace("_", " ")
               )}

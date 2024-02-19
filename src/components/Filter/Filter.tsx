@@ -49,6 +49,7 @@ const Filter = ({
             {uniqueValues.tags.map((tag: string) => {
               return (
                 <li
+                  key={tag}
                   className="cursor-pointer"
                   onClick={() => {
                     handleFilterChange(tag, "tags");
@@ -61,21 +62,18 @@ const Filter = ({
           </ul>
         </div>
         <Select
-          key="brand"
           type="brand"
           value={filters.brand}
           uniqueValues={uniqueValues.brands}
           handleFilterChange={handleFilterChange}
         />
         <Select
-          key="rating"
           type="rating"
           value={filters.rating}
           uniqueValues={[1, 2, 3, 4]}
           handleFilterChange={handleFilterChange}
         />
         <Select
-          key="category"
           type="category"
           value={filters.category}
           uniqueValues={uniqueValues.categories}

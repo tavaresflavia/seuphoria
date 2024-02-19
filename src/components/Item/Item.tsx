@@ -25,7 +25,6 @@ const Item = ({ id, quantity }: { id: string; quantity: number }) => {
     axios
       .get(`${SERVER_URI}/products/${id}`)
       .then((res) => {
-        console.log(res);
         setProduct(res.data);
         setLoading(false);
       })

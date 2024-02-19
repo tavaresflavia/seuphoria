@@ -1,13 +1,17 @@
 import React from "react";
 import Item from "../Item/Item";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector, useAppDispatch} from "../../store/store";
+import { emptyCart} from "../../store/features/cart";
+import {  removeTotal } from "../../store/features/total";
 import { Link } from "react-router-dom";
 
 const ItemList = ({ path }: { path: string }) => {
   const favorites = useAppSelector((state) => state.favorites.value);
   const cart = useAppSelector((state) => state.cart.value);
-  const total = useAppSelector((state) => state.total);
+  const total = useAppSelector((state) => state.total.value);
 
+  const dispatch = useAppDispatch();
+  
 
   return (
     <section>
@@ -28,10 +32,17 @@ const ItemList = ({ path }: { path: string }) => {
             ))
           : ""}
       </ul>
+      <div className="p-4 md:p-8 flex items-end flex-col gap-4">
 
-     <p>{total}</p>
+     <p className="font-semibold text-base md:text-lg">{!!total && `Total:  $${total}`}</p>
      
-     <Link className=" bg-black mx-auto p-2 text-white " to="/checkout"> CHECKOUT</Link>
+     <Link className=" bg-black p-2 text-white " 
+     onClick={()=>{
+        dispatch(emptyCart());
+      dispatch(removeTotal(total));
+     }}
+     to="/checkout"> CHECKOUT ᐳ</Link>
+     </div>
     </section>
   );
 };
