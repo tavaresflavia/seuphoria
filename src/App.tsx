@@ -7,10 +7,9 @@ import Shop from "./pages/Shop/Shop";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Contact from "./pages/Contact/Contact";
-
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
-    <main className="App">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -19,12 +18,10 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/favorites" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/contact" element={<Contact/>} />
-
-
+          <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-    </main>
   );
 }
 

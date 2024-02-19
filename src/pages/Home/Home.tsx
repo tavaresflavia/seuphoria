@@ -5,10 +5,9 @@ import "./Home.scss";
 const Home = () => {
 
   
-
   return (
     <div className="home max-w-screen-xl flex justify-center m-auto">
-      <Parallax pages={6.5} className="pointer-event-auto">
+      <Parallax pages={4} className="pointer-event-auto">
         <ParallaxLayer
           offset={0}
           className="flex items-start mt-8 justify-center md:items-center md:justify-start md:ml-1/5 w-2/5">
