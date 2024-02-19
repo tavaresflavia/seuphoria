@@ -1,41 +1,11 @@
-import {  useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Link } from "react-router-dom";
 import "./Home.scss";
-import Input from "../../components/Input/Input";
 
 const Home = () => {
 
-  interface Inputs {
-    email: string;
-    name: string;
-    message: string;
-  }
-  const defaultInputs = { email: "", name: "", message: "" };
-  const [inputs, setInputs] = useState(defaultInputs);
-  const [error, setError] = useState("");
+  
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    const newInputs: Inputs = { ...inputs };
-    newInputs[(e!.target as HTMLInputElement)!.name as keyof Inputs] = (e!
-      .target as HTMLInputElement)!.value;
-    setInputs(newInputs);
-  };
-  const areInputsValid = () => {
-    const { name, email, message } = inputs;
-    const mailRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (!name || !message || !email.match(mailRegex)) {
-      return false;
-    }
-    return true;
-  };
-  const handleSend = () => {
-    setInputs(defaultInputs);
-    if (!areInputsValid()) {
-      setError("All fields are required");
-    }
-  };
   return (
     <div className="home max-w-screen-xl flex justify-center m-auto">
       <Parallax pages={6.5} className="pointer-event-auto">
@@ -81,51 +51,6 @@ const Home = () => {
         </ParallaxLayer>
         <ParallaxLayer speed={0.35} sticky={{ start: 3, end: 4.5 }} className= "w-1/3 gallery--end">
           <div className="gallery__img gallery__img--end w-full h-full  flex items-center "><p className="gallery__text text-black font-semibold pt-96 text-opacity-70">SHOP NOW</p></div>
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={5.75}
-          className="flex flex-col ustify-center items-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-wide text-black">
-            Contact Us
-          </h2>
-          <div>
-            <Input
-              id="name"
-              onChange={handleChange}
-              value={inputs.name}
-              label="Name"
-              type="name"
-              name="name"
-            />
-            <Input
-              id="email"
-              onChange={handleChange}
-              value={inputs.email}
-              label="Email"
-              type="email"
-              name="email"
-            />
-            <Input
-              id="message"
-              onChange={handleChange}
-              value={inputs.message}
-              label="Message"
-              type="textarea"
-              name="message"
-            />
-            <button
-              className="bg-black w-full text-white font-semibold rounded-md py-2"
-              onClick={handleSend}>
-              SEND
-            </button>
-            {error ? (
-              <p className="text-center text-red-800 w-full font-semibold">
-                {error}
-              </p>
-            ) : (
-              ""
-            )}
-          </div>
         </ParallaxLayer>
       </Parallax>
     </div>

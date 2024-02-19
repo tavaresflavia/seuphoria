@@ -26,3 +26,9 @@ export interface Product {
     category: string;
 
   }
+
+  export interface Inputs {
+    email: string;
+    name: string;
+    message: string;
+  }
