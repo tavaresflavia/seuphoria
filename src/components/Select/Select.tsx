@@ -18,9 +18,9 @@ const Select = ({
   const ratingOption=(rating:number)=> {
     let option = ""
     starsArray(rating).forEach((type) => {
-      option.concat( "full" ? "★" : "☆");
+      option += type === "full" ? "★" :   "☆" ;
     })
-    return option
+    return option + " & Up"
   }
  
   return (

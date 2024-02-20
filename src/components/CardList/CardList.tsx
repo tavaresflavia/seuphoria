@@ -8,7 +8,7 @@ import Filter from "../Filter/Filter";
 const CardList:React.FC = () => {
   const SERVER_URI = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<Filters>({
     brand: "",
@@ -30,9 +30,9 @@ const CardList:React.FC = () => {
         setProducts(res.data);
         setLoading(false);
       })
-      .catch((error: string) => {
-        console.log(error);
-        setError(true);
+      .catch((error: {message: string}) => {
+        console.log(error)
+        setError(error.message);
         setLoading(false);
       });
   }, [filters]);
@@ -60,8 +60,8 @@ const CardList:React.FC = () => {
     return <p> Loading...</p>;
   }
 
-  if (error === true) {
-    return <p> error</p>;
+  if (error) {
+    return <p className="text-center my-8 text-red-800 font-bold "> {`${error}. Try again later.`}</p>;
   }
 
   return (
