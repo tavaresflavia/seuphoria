@@ -16,15 +16,22 @@ const CardList:React.FC = () => {
     rating: 0,
     category: "",
   });
+  const getQueryTags = (tags:string[])=>{
+    let queryTags = ""
+    tags.forEach((tag)=>{
+      queryTags += `&tags=${tag}`
+    })
+    return queryTags
+  }
 
   useEffect(() => {
     const { brand, tags, rating, category } = filters;
-    const queryTags = tags?.map((tag) => `&tags=${tag}`);
+    const queryTags = getQueryTags(tags);
     axios
       .get(
         `${SERVER_URI}/products?${category ? "category=" + category : ""}${
           brand ? "&brand=" + brand : ""
-        }${rating > 0 ? "&rating=" + rating : ""}${String(...queryTags)}`
+        }${rating > 0 ? "&rating=" + rating : ""}${queryTags}`
       )
       .then((res) => {
         setProducts(res.data);
@@ -35,8 +42,8 @@ const CardList:React.FC = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, [filters]);
-
+  }, [filters,SERVER_URI]);
+  
   const handleFilterChange = (
     value: string,
     key: keyof Filters

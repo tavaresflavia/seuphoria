@@ -39,37 +39,28 @@ const Card = ({
       <div className="flex justify-between my-2">
         <img
           className=" w-5 h-5 cursor-pointer"
-          src={(id && favorites.includes(id)) ? fullHeartIcon : heartIcon}
-          onClick={() => { id &&
-            favorites.includes(id)
+          src={id && favorites.includes(id) ? fullHeartIcon : heartIcon}
+          onClick={() => {
+            id && favorites.includes(id)
               ? dispatch(removeFav(id))
               : dispatch(addFav(id));
           }}
           alt="like icon"></img>
-        {id && <QuantityButton id ={id} price={price}/>}
+        {id && <QuantityButton id={id} price={price} />}
       </div>
       <div className="flex justify-between ">
         <h3>{name}</h3>
         <p>{`$${price}`} </p>
       </div>
       <div>
-        {stars.map((type) => {
-          return type === "full" ? (
+        {stars.map((type, index) => {
+          return  (
             <img
+              key={index}
               className="w-3.5 h-3.5 inline-block"
-              src={fullStar}
+              src={type === "full" ? fullStar : type === "half" ? halfStar : emptyStar }
               alt="full star"></img>
-          ) : type === "half" ? (
-            <img
-              className="w-3.5 h-3.5 inline-block"
-              src={halfStar}
-              alt="half star"></img>
-          ) : (
-            <img
-              className="w-3.5 h-3.5 inline-block"
-              src={emptyStar}
-              alt="empty star"></img>
-          );
+          )
         })}
       </div>
     </article>

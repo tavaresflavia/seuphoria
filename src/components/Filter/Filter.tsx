@@ -84,6 +84,7 @@ const Filter = ({
       <div className="flex justify-center text-sm">
         {filters.tags.map((tag) => (
           <p
+            key={tag}
             className="border-2 rounded border-zinc-400 inline p-1 m-1 flex gap-1"
             onClick={(e) => {
               handleFilterChange(tag, "tags");

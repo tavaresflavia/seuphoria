@@ -1,8 +1,8 @@
 import React from "react";
 import Item from "../Item/Item";
-import { useAppSelector, useAppDispatch} from "../../store/store";
-import { emptyCart} from "../../store/features/cart";
-import {  removeTotal } from "../../store/features/total";
+import { useAppSelector, useAppDispatch } from "../../store/store";
+import { emptyCart } from "../../store/features/cart";
+import { removeTotal } from "../../store/features/total";
 import { Link } from "react-router-dom";
 
 const ItemList = ({ path }: { path: string }) => {
@@ -11,7 +11,6 @@ const ItemList = ({ path }: { path: string }) => {
   const total = useAppSelector((state) => state.total.value);
 
   const dispatch = useAppDispatch();
-  
 
   return (
     <section>
@@ -19,7 +18,7 @@ const ItemList = ({ path }: { path: string }) => {
         <Link className=" bg-black mx-auto p-2 text-white " to="/shop">
           ᐸ SHOP
         </Link>
-        </div>
+      </div>
       <ul>
         {Object.keys(cart).length && path === "/cart"
           ? Object.keys(cart).map((id) => (
@@ -32,17 +31,23 @@ const ItemList = ({ path }: { path: string }) => {
             ))
           : ""}
       </ul>
-      <div className="p-4 md:p-8 flex items-end flex-col gap-4">
+      {path === "/cart" && (
+        <div className="p-4 md:p-8 flex items-end flex-col gap-4">
+          <p className="font-semibold text-base md:text-lg">
+            {!!total && `Total:  $${total}`}
+          </p>
 
-     <p className="font-semibold text-base md:text-lg">{!!total && `Total:  $${total}`}</p>
-     
-     <Link className=" bg-black p-2 text-white " 
-     onClick={()=>{
-        dispatch(emptyCart());
-      dispatch(removeTotal(total));
-     }}
-     to="/checkout"> CHECKOUT ᐳ</Link>
-     </div>
+          <Link
+            className=" bg-black p-2 text-white "
+            onClick={() => {
+              dispatch(emptyCart());
+              dispatch(removeTotal(total));
+            }}
+            to="/checkout">
+            CHECKOUT ᐳ
+          </Link>
+        </div>
+      )}
     </section>
   );
 };
